@@ -58,6 +58,7 @@
             this.toolStripStatusLabel_Tries = new System.Windows.Forms.ToolStripStatusLabel();
             this.chkForestFar = new System.Windows.Forms.CheckBox();
             this.chkFieldsFar = new System.Windows.Forms.CheckBox();
+            this.btnClear = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -246,16 +247,16 @@
             // 
             // txtInfo
             // 
-            this.txtInfo.Location = new System.Drawing.Point(1180, 95);
+            this.txtInfo.Location = new System.Drawing.Point(1079, 126);
             this.txtInfo.Multiline = true;
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtInfo.Size = new System.Drawing.Size(487, 563);
+            this.txtInfo.Size = new System.Drawing.Size(588, 504);
             this.txtInfo.TabIndex = 2;
             // 
             // btnAnalyze
             // 
-            this.btnAnalyze.Location = new System.Drawing.Point(1469, 17);
+            this.btnAnalyze.Location = new System.Drawing.Point(1483, 23);
             this.btnAnalyze.Name = "btnAnalyze";
             this.btnAnalyze.Size = new System.Drawing.Size(184, 83);
             this.btnAnalyze.TabIndex = 3;
@@ -272,10 +273,10 @@
             this.groupBox2.Controls.Add(this.chkHillsFar);
             this.groupBox2.Location = new System.Drawing.Point(791, 126);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(376, 601);
+            this.groupBox2.Size = new System.Drawing.Size(282, 504);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Generate Options";
             // 
             // chkHillsFar
             // 
@@ -348,11 +349,22 @@
             this.chkFieldsFar.Text = "Поля не рядом";
             this.chkFieldsFar.UseVisualStyleBackColor = true;
             // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(1554, 647);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(113, 44);
+            this.btnClear.TabIndex = 7;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1679, 740);
+            this.Controls.Add(this.btnClear);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.field14);
             this.Controls.Add(this.field1);
@@ -421,6 +433,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Tries;
         private System.Windows.Forms.CheckBox chkFieldsFar;
         private System.Windows.Forms.CheckBox chkForestFar;
+        private System.Windows.Forms.Button btnClear;
     }
 }
 

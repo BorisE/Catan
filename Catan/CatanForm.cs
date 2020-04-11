@@ -33,13 +33,12 @@ namespace Catan
             for (i = 0; i < 1000; i++)
             {
                 CatanField.Generate();
-                DrawPannels();
                 
                 //Check HILLS
                 if (chkHillsFar.Checked)
                 {
                     var minDist = CatanField.GetNearestSameTerrainTypeDistance(TerrainType.Hill);
-                    txtInfo.Text += "Min distance for type: " + TerrainType.Hill.ToString() + " is " + minDist + Environment.NewLine;
+                    txtInfo.Text += "Min distance for type: " + TerrainType.Hill.ToString() + " is " + minDist.ToString("0.00") + Environment.NewLine;
                     bHillsFlag = (minDist > 2.4);
                 }
                 else
@@ -51,7 +50,7 @@ namespace Catan
                 if (chkMoutainFar.Checked)
                 {
                     var minDist = CatanField.GetNearestSameTerrainTypeDistance(TerrainType.Mountain);
-                    txtInfo.Text += "Min distance for type: " + TerrainType.Mountain.ToString() + " is " + minDist + Environment.NewLine;
+                    txtInfo.Text += "Min distance for type: " + TerrainType.Mountain.ToString() + " is " + minDist.ToString("0.00") + Environment.NewLine;
 
                     bMountFlag = (minDist > 2.4);
                 }
@@ -64,7 +63,7 @@ namespace Catan
                 if (chkPastureFar.Checked)
                 {
                     var minDist = CatanField.GetNearestSameTerrainTypeDistance(TerrainType.Pasture);
-                    txtInfo.Text += "Min distance for type: " + TerrainType.Pasture.ToString() + " is " + minDist + Environment.NewLine;
+                    txtInfo.Text += "Min distance for type: " + TerrainType.Pasture.ToString() + " is " + minDist.ToString("0.00") + Environment.NewLine;
 
                     bPastureFlag = (minDist > 2.4);
                 }
@@ -77,7 +76,7 @@ namespace Catan
                 if (chkForestFar.Checked)
                 {
                     var minDist = CatanField.GetNearestSameTerrainTypeDistance(TerrainType.Forest);
-                    txtInfo.Text += "Min distance for type: " + TerrainType.Forest.ToString() + " is " + minDist + Environment.NewLine;
+                    txtInfo.Text += "Min distance for type: " + TerrainType.Forest.ToString() + " is " + minDist.ToString("0.00") + Environment.NewLine;
 
                     bForestFlag = (minDist > 2.4);
 
@@ -91,7 +90,7 @@ namespace Catan
                 if (chkFieldsFar.Checked)
                 {
                     var minDist = CatanField.GetNearestSameTerrainTypeDistance(TerrainType.Field);
-                    txtInfo.Text += "Min distance for type : " + TerrainType.Field.ToString() + " is " + minDist + Environment.NewLine;
+                    txtInfo.Text += "Min distance for type : " + TerrainType.Field.ToString() + " is " + minDist.ToString("0.00") + Environment.NewLine;
 
                     bFieldFlag = (minDist > 2.4);
 
@@ -106,6 +105,7 @@ namespace Catan
                 if (bSolutionFound)
                     break;
             }
+            DrawPannels();
             toolStripStatusLabel_Tries.Text = "Tries : " + i ;
         }
 
@@ -131,6 +131,12 @@ namespace Catan
 
             double Dist = CatanField.CalcDistance(CatanField.FieldItems[0].Coord, CatanField.FieldItems[18].Coord);
             txtInfo.Text+= Dist + Environment.NewLine;
+        }
+
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtInfo.Text = "";
         }
 
         private void DrawPannels()
@@ -178,7 +184,6 @@ namespace Catan
 
             return Res;
         }
-
 
     }
 }
