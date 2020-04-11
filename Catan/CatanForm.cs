@@ -37,7 +37,7 @@ namespace Catan
                 //Check HILLS
                 if (chkHillsFar.Checked)
                 {
-                    var minDist = CatanField.GetNearestSameTerrainTypeDistance(TerrainType.Hill);
+                    var minDist = CatanField.GetNearestSameTerrainTypeMinDistance(TerrainType.Hill);
                     txtInfo.Text += "Min distance for type: " + TerrainType.Hill.ToString() + " is " + minDist.ToString("0.00") + Environment.NewLine;
                     bHillsFlag = (minDist > 2.4);
                 }
@@ -49,7 +49,7 @@ namespace Catan
                 //Check Mountains
                 if (chkMoutainFar.Checked)
                 {
-                    var minDist = CatanField.GetNearestSameTerrainTypeDistance(TerrainType.Mountain);
+                    var minDist = CatanField.GetNearestSameTerrainTypeMinDistance(TerrainType.Mountain);
                     txtInfo.Text += "Min distance for type: " + TerrainType.Mountain.ToString() + " is " + minDist.ToString("0.00") + Environment.NewLine;
 
                     bMountFlag = (minDist > 2.4);
@@ -62,7 +62,7 @@ namespace Catan
                 //Check Pasture
                 if (chkPastureFar.Checked)
                 {
-                    var minDist = CatanField.GetNearestSameTerrainTypeDistance(TerrainType.Pasture);
+                    var minDist = CatanField.GetNearestSameTerrainTypeMinDistance(TerrainType.Pasture);
                     txtInfo.Text += "Min distance for type: " + TerrainType.Pasture.ToString() + " is " + minDist.ToString("0.00") + Environment.NewLine;
 
                     bPastureFlag = (minDist > 2.4);
@@ -75,7 +75,7 @@ namespace Catan
                 //Check Forest
                 if (chkForestFar.Checked)
                 {
-                    var minDist = CatanField.GetNearestSameTerrainTypeDistance(TerrainType.Forest);
+                    var minDist = CatanField.GetNearestSameTerrainTypeMinDistance(TerrainType.Forest);
                     txtInfo.Text += "Min distance for type: " + TerrainType.Forest.ToString() + " is " + minDist.ToString("0.00") + Environment.NewLine;
 
                     bForestFlag = (minDist > 2.4);
@@ -89,7 +89,7 @@ namespace Catan
                 //Check Field
                 if (chkFieldsFar.Checked)
                 {
-                    var minDist = CatanField.GetNearestSameTerrainTypeDistance(TerrainType.Field);
+                    var minDist = CatanField.GetNearestSameTerrainTypeMinDistance(TerrainType.Field);
                     txtInfo.Text += "Min distance for type : " + TerrainType.Field.ToString() + " is " + minDist.ToString("0.00") + Environment.NewLine;
 
                     bFieldFlag = (minDist > 2.4);

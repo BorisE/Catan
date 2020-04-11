@@ -83,7 +83,7 @@ namespace Catan
         }
 
         /// <summary>
-        /// Private function to init available cards arrays
+        /// init available cards arrays
         /// </summary>
         private void InitAvailableCards()
         {
@@ -137,6 +137,11 @@ namespace Catan
             }
         }
 
+        /// <summary>
+        /// Get all Field Items of desired terrain type
+        /// </summary>
+        /// <param name="TT"></param>
+        /// <returns></returns>
         public List<FieldElement> GetItemsByTerrainType(TerrainType TT)
         {
             List<FieldElement> RetItems = new List<FieldElement>();
@@ -151,6 +156,11 @@ namespace Catan
 
         }
 
+        /// <summary>
+        /// Search for nearest item with the same terrain type
+        /// </summary>
+        /// <param name="AnalyzedFieldItem"></param>
+        /// <returns></returns>
         public FieldElement GetNearestSameTerrainType(FieldElement AnalyzedFieldItem)
         {
             var dist = 0.0;
@@ -171,7 +181,12 @@ namespace Catan
             return retField;
         }
 
-        public double GetNearestSameTerrainTypeDistance(TerrainType TT)
+        /// <summary>
+        /// Calc minimum distance for the same terrain types items (by terrain type)
+        /// </summary>
+        /// <param name="TT"></param>
+        /// <returns></returns>
+        public double GetNearestSameTerrainTypeMinDistance(TerrainType TT)
         {
             List<FieldElement> ItemsList;
             ItemsList = GetItemsByTerrainType(TT);
