@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace Catan
 {
     partial class MainForm
     {
@@ -259,6 +259,7 @@
             this.Controls.Add(this.field1);
             this.Name = "MainForm";
             this.Text = "CATAN";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
 
         }
