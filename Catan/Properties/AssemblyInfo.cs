@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WindowsFormsApp1")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Catan")]
+[assembly: AssemblyDescription("Catan table game field generator")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WindowsFormsApp1")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyProduct("Catan")]
+[assembly: AssemblyCopyright("Copyright ©  2020 by Boris Emchenko")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
