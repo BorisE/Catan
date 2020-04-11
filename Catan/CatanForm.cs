@@ -93,9 +93,7 @@ namespace WindowsFormsApp1
             };
 
 
-            Coordinates_old.Add(0, new Tuple<int, int>(2, 0));
-            Coordinates_old.Add(1, new Tuple<int, int>(4, 0));
-            Coordinates_old.Add(2, new Tuple<int, int>(6, 0));
+            Coordinates.Clear();
 
             Coordinates.Add(0,  new CoorPair(2, 0));
             Coordinates.Add(1,  new CoorPair(4, 0));

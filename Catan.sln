@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatanForm", "WindowsFormsApp1\CatanForm.csproj", "{3A9F0D89-D1AD-413E-8609-EEFBDA078338}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatanForm", "Catan\CatanForm.csproj", "{3A9F0D89-D1AD-413E-8609-EEFBDA078338}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
