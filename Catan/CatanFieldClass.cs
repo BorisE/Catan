@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Catan
 {
-    public enum FieldType
+    public enum TerrainType
     {
         None = -1,
         Desert = 0,
@@ -18,86 +18,86 @@ namespace Catan
 
     }
 
-    public class CoorPair
+    public class CoordinatePair
     {
         public int x;
         public int y;
 
-        public CoorPair(int extx, int exty)
+        public CoordinatePair(int extx, int exty)
         {
             x = extx;
             y = exty;
         }
     }
 
-    public class CatanFieldElement
+    public class FieldElement
     {
         public string Name = "";
         public int id = 0;
         public int Num = 0;
-        public FieldType Type = FieldType.None;
-        public CoorPair Coord;
+        public TerrainType Type = TerrainType.None;
+        public CoordinatePair Coord;
 
     }
 
     public class CatanFieldClass
     {
-        public CatanFieldElement[] FieldItems = new CatanFieldElement[18];
+        public FieldElement[] FieldItems = new FieldElement[19];
 
-        List<FieldType> AvailableFields;
+        List<TerrainType> AvailableTerrains;
         List<int> AvailableNums;
 
         public CatanFieldClass()
         {
             //Init Field
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < 19; i++)
             {
-                FieldItems[i] = new CatanFieldElement();
+                FieldItems[i] = new FieldElement();
             }
 
             //Init field elements coordinates 
-            FieldItems[0].Coord = new CoorPair(2, 0);
-            FieldItems[1].Coord = new CoorPair(4, 0);
-            FieldItems[2].Coord = new CoorPair(6, 0);
+            FieldItems[0].Coord = new CoordinatePair(2, 0);
+            FieldItems[1].Coord = new CoordinatePair(4, 0);
+            FieldItems[2].Coord = new CoordinatePair(6, 0);
 
-            FieldItems[11].Coord = new CoorPair(1, 2);
-            FieldItems[12].Coord = new CoorPair(3, 2);
-            FieldItems[13].Coord = new CoorPair(5, 2);
-            FieldItems[3].Coord = new CoorPair(7, 2);
+            FieldItems[11].Coord = new CoordinatePair(1, 2);
+            FieldItems[12].Coord = new CoordinatePair(3, 2);
+            FieldItems[13].Coord = new CoordinatePair(5, 2);
+            FieldItems[3].Coord = new CoordinatePair(7, 2);
 
-            FieldItems[0].Coord = new CoorPair(0, 4);
-            FieldItems[0].Coord = new CoorPair(2, 4);
-            FieldItems[0].Coord = new CoorPair(4, 4);
-            FieldItems[0].Coord = new CoorPair(6, 4);
-            FieldItems[0].Coord = new CoorPair(8, 4);
+            FieldItems[10].Coord = new CoordinatePair(0, 4);
+            FieldItems[17].Coord = new CoordinatePair(2, 4);
+            FieldItems[18].Coord = new CoordinatePair(4, 4);
+            FieldItems[14].Coord = new CoordinatePair(6, 4);
+            FieldItems[4].Coord = new CoordinatePair(8, 4);
 
-            FieldItems[0].Coord = new CoorPair(1, 6);
-            FieldItems[0].Coord = new CoorPair(3, 6);
-            FieldItems[0].Coord = new CoorPair(5, 6);
-            FieldItems[0].Coord = new CoorPair(7, 6);
+            FieldItems[9].Coord = new CoordinatePair(1, 6);
+            FieldItems[16].Coord = new CoordinatePair(3, 6);
+            FieldItems[15].Coord = new CoordinatePair(5, 6);
+            FieldItems[5].Coord = new CoordinatePair(7, 6);
 
-            FieldItems[0].Coord = new CoorPair(2, 8);
-            FieldItems[0].Coord = new CoorPair(4, 8);
-            FieldItems[0].Coord = new CoorPair(6, 8);
+            FieldItems[8].Coord = new CoordinatePair(2, 8);
+            FieldItems[7].Coord = new CoordinatePair(4, 8);
+            FieldItems[6].Coord = new CoordinatePair(6, 8);
 
         }
 
         /// <summary>
-        /// Private function to init cards arrays
+        /// Private function to init available cards arrays
         /// </summary>
-        private void InitFieldCards()
+        private void InitAvailableCards()
         {
             //clear prev instance
-            AvailableFields = null;
+            AvailableTerrains = null;
             AvailableNums = null;
 
-            AvailableFields = new List<FieldType>()
+            AvailableTerrains = new List<TerrainType>()
                 {
-                    FieldType.Pasture, FieldType.Pasture, FieldType.Pasture, FieldType.Pasture,
-                    FieldType.Field, FieldType.Field, FieldType.Field, FieldType.Field,
-                    FieldType.Forest, FieldType.Forest, FieldType.Forest, FieldType.Forest,
-                    FieldType.Mountain, FieldType.Mountain, FieldType.Mountain,
-                    FieldType.Hill,FieldType.Hill,FieldType.Hill
+                    TerrainType.Pasture, TerrainType.Pasture, TerrainType.Pasture, TerrainType.Pasture,
+                    TerrainType.Field, TerrainType.Field, TerrainType.Field, TerrainType.Field,
+                    TerrainType.Forest, TerrainType.Forest, TerrainType.Forest, TerrainType.Forest,
+                    TerrainType.Mountain, TerrainType.Mountain, TerrainType.Mountain,
+                    TerrainType.Hill,TerrainType.Hill,TerrainType.Hill
                 };
 
             AvailableNums = new List<int>()
@@ -107,13 +107,15 @@ namespace Catan
                 };
         }
 
+        /// <summary>
+        /// Generate Game Field
+        /// </summary>
         public void Generate()
         {
-            InitFieldCards();
-
+            InitAvailableCards();
 
             var fldidx = 0;
-            FieldType curField = FieldType.None;
+            TerrainType curField = TerrainType.None;
             Random Rnd = new Random();
 
             var numidx = 0;
@@ -121,24 +123,78 @@ namespace Catan
 
             for (int i = 0; i < 18; i++)
             {
-                fldidx = Rnd.Next(0, AvailableFields.Count - 1);
-                curField = AvailableFields[fldidx];
-                AvailableFields.RemoveAt(fldidx);
+                fldidx = Rnd.Next(0, AvailableTerrains.Count - 1);
+                curField = AvailableTerrains[fldidx];
+                AvailableTerrains.RemoveAt(fldidx);
 
                 numidx = Rnd.Next(0, AvailableNums.Count - 1);
                 curNum = AvailableNums[numidx];
                 AvailableNums.RemoveAt(numidx);
 
-                FieldItems[i] = new CatanFieldElement
-                {
-                    id = i,
-                    Num = curNum,
-                    Type = curField
-                };
+                FieldItems[i].id = i;
+                FieldItems[i].Num = curNum;
+                FieldItems[i].Type = curField;
             }
         }
 
-        private double CalcDistance(CoorPair P1, CoorPair P2)
+        public List<FieldElement> GetItemsByTerrainType(TerrainType TT)
+        {
+            List<FieldElement> RetItems = new List<FieldElement>();
+            for (int i = 0; i < 18; i++)
+            {
+                if (FieldItems[i].Type == TT)
+                {
+                    RetItems.Add(FieldItems[i]);
+                }
+            }
+            return RetItems;
+
+        }
+
+        public FieldElement GetNearestSameTerrainType(FieldElement AnalyzedFieldItem)
+        {
+            var dist = 0.0;
+            var mindist = 1000.0;
+            FieldElement retField = AnalyzedFieldItem;
+            for (int i = 0; i < 18; i++)
+            {
+                if (FieldItems[i].Type == AnalyzedFieldItem.Type && AnalyzedFieldItem.id != i)
+                {
+                    dist = CalcDistance(AnalyzedFieldItem, FieldItems[i]);
+                    if (dist < mindist)
+                    {
+                        mindist = dist;
+                        retField = FieldItems[i];
+                    }
+                }
+            }
+            return retField;
+        }
+
+        public double GetNearestSameTerrainTypeDistance(TerrainType TT)
+        {
+            List<FieldElement> ItemsList;
+            ItemsList = GetItemsByTerrainType(TT);
+
+            var minDist = 100.0;
+            foreach (var item in ItemsList)
+            {
+                FieldElement Nearest = GetNearestSameTerrainType(item);
+                var dist = CalcDistance(item, Nearest);
+                if (dist < minDist)
+                {
+                    minDist = dist;
+                }
+            }
+
+            return minDist;
+        }
+
+        public double CalcDistance(FieldElement P1, FieldElement P2)
+        {
+            return CalcDistance(P1.Coord, P2.Coord);
+        }
+        public double CalcDistance(CoordinatePair P1, CoordinatePair P2)
         {
             double dist = Math.Sqrt((P2.x - P1.x) * (P2.x - P1.x) + (P2.y - P1.y) * (P2.y - P1.y));
             return dist;
